@@ -22,7 +22,7 @@ namespace SweetSugar.Scripts.MapScripts.StaticMap.Editor
         public string GetSceneName()
         {
             if (!staticMap) return "game";
-            return "gameStatic";
+            return "gameIsland";
         }
     }
 }

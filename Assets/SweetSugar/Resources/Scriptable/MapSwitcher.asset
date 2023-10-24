@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f42a67566daeb447a7595b653fad09b, type: 3}
   m_Name: MapSwitcher
   m_EditorClassIdentifier: 
-  staticMap: 0
+  staticMap: 1

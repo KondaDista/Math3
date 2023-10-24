@@ -526,7 +526,7 @@ namespace SweetSugar.Scripts.Editor
             else if (selected == 1)
             {
                 if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
+                    EditorSceneManager.GetActiveScene().name == "gameIsland")
                     GUISettings();
                 else
                     GUIShowWarning();
@@ -537,7 +537,7 @@ namespace SweetSugar.Scripts.Editor
             else if (selected == 2)
             {
                 if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
+                    EditorSceneManager.GetActiveScene().name == "gameIsland")
                     GUIShops();
                 else
                     GUIShowWarning();
@@ -545,7 +545,7 @@ namespace SweetSugar.Scripts.Editor
             else if (selected == 3)
             {
                 if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
+                    EditorSceneManager.GetActiveScene().name == "gameIsland")
                     GUIInappSettings();
                 else
                     GUIShowWarning();
@@ -557,7 +557,7 @@ namespace SweetSugar.Scripts.Editor
             else if (selected == 5)
             {
                 if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
+                    EditorSceneManager.GetActiveScene().name == "gameIsland")
                     GUIDialogs();
                 else
                     GUIShowWarning();
@@ -565,7 +565,7 @@ namespace SweetSugar.Scripts.Editor
             else if (selected == 6)
             {
                 if (EditorSceneManager.GetActiveScene().name == "game" ||
-                    EditorSceneManager.GetActiveScene().name == "gameStatic")
+                    EditorSceneManager.GetActiveScene().name == "gameIsland")
                     GUIRate();
                 else
                     GUIShowWarning();

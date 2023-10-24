@@ -67,6 +67,9 @@ namespace SweetSugar.Scripts.Core
 
         //wait for purchasing of coins succeed
         public static int waitedPurchaseGems;
+        
+        //amount of crafted items
+        public static int CraftItems;
 
         //EDITOR: how often to show the "Rate us on the store" popup
         public int ShowRateEvery;
@@ -98,6 +101,7 @@ namespace SweetSugar.Scripts.Core
             DebugLogKeeper.Init();
             Gems = PlayerPrefs.GetInt("Gems");
             lifes = PlayerPrefs.GetInt("Lifes");
+            CraftItems = PlayerPrefs.GetInt("CraftItems");
             if (PlayerPrefs.GetInt("Lauched") == 0)
             {
                 //First lauching
@@ -105,6 +109,9 @@ namespace SweetSugar.Scripts.Core
                 PlayerPrefs.SetInt("Lifes", lifes);
                 Gems = FirstGems;
                 PlayerPrefs.SetInt("Gems", Gems);
+                CraftItems = 0;
+                PlayerPrefs.SetInt("CraftItems", CraftItems);
+                
                 PlayerPrefs.SetInt("Music", 1);
                 PlayerPrefs.SetInt("Sound", 1);
 
@@ -210,7 +217,6 @@ namespace SweetSugar.Scripts.Core
 #if PLAYFAB || GAMESPARKS || EPSILON
             NetworkManager.currencyManager.IncBalance(count);
 #endif
-
         }
 
         public void SpendGems(int count)
@@ -222,9 +228,28 @@ namespace SweetSugar.Scripts.Core
 #if PLAYFAB || GAMESPARKS || EPSILON
             NetworkManager.currencyManager.DecBalance(count);
 #endif
-
         }
 
+        public void AddCraftItems(int count)
+        {
+            CraftItems += count;
+            PlayerPrefs.SetInt("CraftItems", CraftItems);
+            PlayerPrefs.Save();
+#if PLAYFAB || GAMESPARKS || EPSILON
+            NetworkManager.currencyManager.IncBalance(count);
+#endif
+        }
+
+        public void SpendCraftItems(int count)
+        {
+            SoundBase.Instance.PlayOneShot(SoundBase.Instance.cash);
+            CraftItems -= count;
+            PlayerPrefs.SetInt("CraftItems", CraftItems);
+            PlayerPrefs.Save();
+#if PLAYFAB || GAMESPARKS || EPSILON
+            NetworkManager.currencyManager.DecBalance(count);
+#endif
+        }
 
         public void RestoreLifes()
         {

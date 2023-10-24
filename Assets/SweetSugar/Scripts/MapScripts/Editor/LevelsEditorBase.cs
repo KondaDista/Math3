@@ -40,26 +40,26 @@ namespace SweetSugar.Scripts.MapScripts.Editor
             }
         }
 
-        protected void UpdatePathWaypoints(List<MapLevel> mapLevels)
+        /*protected void UpdatePathWaypoints(List<MapLevel> mapLevels)
         {
             Path path = FindObjectOfType<Path>();
             path.Waypoints.Clear();
             foreach (MapLevel mapLevel in mapLevels)
                 path.Waypoints.Add(mapLevel.PathPivot);
-        }
+        }*/
 
         protected void SetAllMapLevelsAsDirty()
         {
             GetMapLevels().ForEach(EditorUtility.SetDirty);
         }
 
-        protected void SetStarsEnabled(LevelsMap levelsMap, bool isEnabled)
+        /*protected void SetStarsEnabled(LevelsMap levelsMap, bool isEnabled)
         {
             levelsMap.SetStarsEnabled(isEnabled);
             if (isEnabled)
                 levelsMap.SetStarsType(levelsMap.StarsType);
             EditorUtility.SetDirty(levelsMap);
             SetAllMapLevelsAsDirty();
-        }
+        }*/
     }
 }

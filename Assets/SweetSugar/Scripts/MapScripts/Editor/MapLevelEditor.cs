@@ -97,8 +97,8 @@ namespace SweetSugar.Scripts.MapScripts.Editor
             mapLevel.transform.SetSiblingIndex(ind);
             mapLevels.Insert(ind, mapLevel);
             UpdateLevelsNumber(mapLevels);
-            UpdatePathWaypoints(mapLevels);
-            SetStarsEnabled(levelsMap, levelsMap.StarsEnabled);
+            //UpdatePathWaypoints(mapLevels);
+            //SetStarsEnabled(levelsMap, levelsMap.StarsEnabled);
             Selection.activeGameObject = mapLevel.gameObject;
         }
 
@@ -122,13 +122,13 @@ namespace SweetSugar.Scripts.MapScripts.Editor
             int ind = mapLevels.IndexOf(_mapLevel);
             mapLevels.Remove(_mapLevel);
             UpdateLevelsNumber(mapLevels);
-            UpdatePathWaypoints(mapLevels);
+            //UpdatePathWaypoints(mapLevels);
             LevelsMap levelsMap = FindObjectOfType<LevelsMap>();
             Selection.activeGameObject =
                 mapLevels.Any()
                     ? mapLevels[Mathf.Max(0, ind - 1)].gameObject
                     : levelsMap.gameObject;
-            SetStarsEnabled(levelsMap, levelsMap.StarsEnabled);
+            //SetStarsEnabled(levelsMap, levelsMap.StarsEnabled);
             _pendingDeletedGameObject = _mapLevel.gameObject;
         }
 

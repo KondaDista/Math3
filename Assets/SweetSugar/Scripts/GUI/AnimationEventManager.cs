@@ -109,11 +109,10 @@ namespace SweetSugar.Scripts.GUI
             }
             if (name == "MenuComplete")
             {
-                for (var i = 1; i <= 3; i++)
+                /*for (var i = 1; i <= 3; i++)
                 {
                     transform.Find("Image").Find("Star" + i).gameObject.SetActive(false);
-                }
-
+                }*/
             }
 
             var videoButton = transform.Find("Image/Video");
@@ -192,11 +191,11 @@ namespace SweetSugar.Scripts.GUI
         /// </summary>
         public void OnFinished()
         {
-            if (name == "MenuComplete")
+            /*if (name == "MenuComplete")
             {
                 StartCoroutine(MenuComplete());
-                StartCoroutine(MenuCompleteScoring());
-            }
+                //StartCoroutine(MenuCompleteScoring());
+            }*/
             if (name == "MenuPlay")
             {
                 //            InitScript.Instance.currentTarget = InitScript.Instance.targets[PlayerPrefs.GetInt( "OpenLevel" )];
@@ -279,7 +278,7 @@ namespace SweetSugar.Scripts.GUI
         /// <summary>
         /// Complete popup animation
         /// </summary>
-        IEnumerator MenuComplete()
+        /*IEnumerator MenuComplete()
         {
             for (var i = 1; i <= LevelManager.THIS.stars; i++)
             {
@@ -288,12 +287,12 @@ namespace SweetSugar.Scripts.GUI
                 SoundBase.Instance.PlayOneShot(SoundBase.Instance.star[i - 1]);
                 yield return new WaitForSeconds(0.5f);
             }
-        }
+        }*/
 
         /// <summary>
         /// Complete popup animation
         /// </summary>
-        IEnumerator MenuCompleteScoring()
+        /*IEnumerator MenuCompleteScoring()
         {
             var scores = transform.Find("Image").Find("Score").GetComponent<TextMeshProUGUI>();
             for (var i = 0; i <= LevelManager.Score; i += 500)
@@ -303,7 +302,7 @@ namespace SweetSugar.Scripts.GUI
                 yield return new WaitForSeconds(0.00001f);
             }
             scores.text = "" + LevelManager.Score;
-        }
+        }*/
 
         /// <summary>
         /// SHows info popup

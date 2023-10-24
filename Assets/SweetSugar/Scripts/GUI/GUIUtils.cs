@@ -35,7 +35,7 @@ namespace SweetSugar.Scripts.GUI
         {
             if (InitScript.lifes > 0 || DebugSettings.AI)
             {
-                InitScript.Instance.SpendLife(1);
+                //InitScript.Instance.SpendLife(1);
                 LevelManager.THIS.gameStatus = GameState.PrepareGame;
             }
             else

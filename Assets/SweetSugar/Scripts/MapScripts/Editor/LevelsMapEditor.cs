@@ -18,7 +18,8 @@ using UnityEngine;
 namespace SweetSugar.Scripts.MapScripts.Editor
 {
 	[CustomEditor (typeof(LevelsMap))]
-	public class LevelsMapEditor : LevelsEditorBase {
+	public class LevelsMapEditor : LevelsEditorBase 
+	{
 		private LevelsMap _levelsMap;
 
 		private float _width;
@@ -35,7 +36,7 @@ namespace SweetSugar.Scripts.MapScripts.Editor
 			if (!fixToggle) {
 				if (_levelsMap.IsGenerated) {
 					DrawLevelsSettings ();
-					DrawStarsSettings ();
+					//DrawStarsSettings ();
 					DrawMapCameraSettings ();
 
 					DrawLevelClickSettings ();
@@ -65,17 +66,17 @@ namespace SweetSugar.Scripts.MapScripts.Editor
 
 			_levelsMap.TranslationType = (TranslationType)EditorGUILayout.EnumPopup ("Translation type", _levelsMap.TranslationType);
 
-			if (_levelsMap.WaypointsMover.Path == null)
-				_levelsMap.WaypointsMover.Path = _levelsMap.transform.Find ("Path").GetComponent<Path> ();
+			/*if (_levelsMap.WaypointsMover.Path == null)
+				_levelsMap.WaypointsMover.Path = _levelsMap.transform.Find("Path").GetComponent<Path> ();
 
 			Path path = _levelsMap.WaypointsMover.Path;
 			path.IsCurved = EditorGUILayout.Toggle ("Curved", path.IsCurved);
 			path.GizmosColor = EditorGUILayout.ColorField ("Gizmos Path Color", path.GizmosColor);
-			path.GizmosRadius = EditorGUILayout.FloatField ("Gizmos Path Pivot Radius", path.GizmosRadius);
+			path.GizmosRadius = EditorGUILayout.FloatField ("Gizmos Path Pivot Radius", path.GizmosRadius);*/
 
-			GUILayout.EndVertical ();
+			GUILayout.EndVertical();
 
-			EditorUtility.SetDirty (path);
+			//EditorUtility.SetDirty (path);
 		}
 
 		private void Clear () {
@@ -98,16 +99,16 @@ namespace SweetSugar.Scripts.MapScripts.Editor
 			if (GUILayout.Button ("Generate draft", GUILayout.MinWidth (120))) {
 				Generate ();
 				_levelsMap.IsGenerated = true;
-				SetStarsEnabled (_levelsMap, false);
+				//SetStarsEnabled (_levelsMap, false);
 			}
 		}
 
 		private void Generate () {
 			InitBounds ();
-			List<MapLevel> levels = GenerateLevels ();
-			Path path = GeneratePath (levels);
-			_levelsMap.WaypointsMover = GenerateCharacter (path);
-			_levelsMap.WaypointsMover.transform.position = levels [0].transform.position;
+			List<MapLevel> levels = GenerateLevels();
+			//Path path = GeneratePath (levels);
+			/*_levelsMap.WaypointsMover = GenerateCharacter (path);
+			_levelsMap.WaypointsMover.transform.position = levels [0].transform.position;*/
 		}
 
 		private void InitBounds () {
@@ -140,14 +141,15 @@ namespace SweetSugar.Scripts.MapScripts.Editor
 			return CreateMapLevel (position, number, _levelsMap.MapLevelPrefab);
 		}
 
-		private Path GeneratePath (List<MapLevel> levels) {
+		/*private Path GeneratePath (List<MapLevel> levels) 
+		{
 			Path path = new GameObject ("Path").AddComponent<Path> ();
 			path.IsCurved = false;
 			path.GizmosRadius = Camera.main.orthographicSize / 40f;
 			path.transform.parent = _levelsMap.transform;
 			UpdatePathWaypoints (levels);
 			return path;
-		}
+		}*/
 
 		private Vector3 GetPosition (float p, float width, float xOffset, float height, float yOffset) {
 			return new Vector3 (
@@ -174,17 +176,19 @@ namespace SweetSugar.Scripts.MapScripts.Editor
 			return points;
 		}
 
-		private WaypointsMover GenerateCharacter (Path path) {
+		/*private WaypointsMover GenerateCharacter (Path path) 
+		{
 			Transform character = PrefabUtility.InstantiatePrefab (_levelsMap.CharacterPrefab) as Transform;
 			character.transform.parent = _levelsMap.transform;
 			WaypointsMover waypointsMover = character.gameObject.AddComponent<WaypointsMover> ();
 			waypointsMover.Path = path;
 			waypointsMover.Speed = Camera.main.orthographicSize;
 			return waypointsMover;
-		}
+		}*/
 
 		#endregion
 
+		/*
 		#region Stars
 
 		private void DrawStarsSettings () {
@@ -211,6 +215,7 @@ namespace SweetSugar.Scripts.MapScripts.Editor
 		}
 
 		#endregion
+		*/
 
 		#region Map camera
 

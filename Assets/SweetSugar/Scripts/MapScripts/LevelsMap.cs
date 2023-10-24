@@ -70,24 +70,22 @@ namespace SweetSugar.Scripts.MapScripts
         public void Reset()
         {
             UpdateMapLevels();
-            PlaceCharacterToLastUnlockedLevel();
+            //PlaceCharacterToLastUnlockedLevel();
         }
 
         private void UpdateMapLevels()
         {
             foreach (MapLevel mapLevel in GetMapLevels())
             {
-                mapLevel.UpdateState(
-                    _mapProgressManager.LoadLevelStarsCount(mapLevel.Number),
-                    IsLevelLocked(mapLevel.Number));
+                mapLevel.UpdateState(IsLevelLocked(mapLevel.Number));
             }
         }
 
-        private void PlaceCharacterToLastUnlockedLevel()
+        /*private void PlaceCharacterToLastUnlockedLevel()
         {
             int lastUnlockedNumber = GetMapLevels().Where(l => !l.IsLocked).Select(l => l.Number).Max() - 1;
             lastUnlockedNumber = Mathf.Clamp(lastUnlockedNumber, 1, lastUnlockedNumber);
-        }
+        }*/
 
         public static int GetLastestReachedLevel()
         {//1.3.3
@@ -113,11 +111,11 @@ namespace SweetSugar.Scripts.MapScripts
             CompleteLevelInternal(number, starsCount);
         }
 
-        internal static void OnLevelSelected(int number)
+        /*internal static void OnLevelSelected(int number)
         {
             if (LevelSelected != null && !IsLevelLocked(number))  //need to fix in the map plugin
                 LevelSelected(_instance, new LevelReachedEventArgs(number));
-        }
+        }*/
         
         public static bool IsLevelLocked(int number)
         {
@@ -170,7 +168,7 @@ namespace SweetSugar.Scripts.MapScripts
         public delegate void ReachedLevelEvent();
         public static ReachedLevelEvent OnLevelReached;
 
-        private void RaiseLevelReached(int number)
+        /*private void RaiseLevelReached(int number)
         {
             MapLevel mapLevel = GetLevel(number);
             mapLevel.SetEffect();
@@ -179,7 +177,7 @@ namespace SweetSugar.Scripts.MapScripts
 
             if (LevelReached != null)
                 LevelReached(this, new LevelReachedEventArgs(number));
-        }
+        }*/
 
         public MapLevel GetLevel(int number)
         {
@@ -193,7 +191,7 @@ namespace SweetSugar.Scripts.MapScripts
             Reset();
         }
 
-        public void SetStarsEnabled(bool bEnabled)
+        /*public void SetStarsEnabled(bool bEnabled)
         {
             StarsEnabled = bEnabled;
             int starsCount = 0;
@@ -204,14 +202,14 @@ namespace SweetSugar.Scripts.MapScripts
                 mapLevel.StarsHoster.gameObject.SetActive(bEnabled);
                 //mapLevel.SolidStarsHoster.gameObject.SetActive(bEnabled);
             }
-        }
+        }*/
 
-        public void SetStarsType(StarsType starsType)
+        /*public void SetStarsType(StarsType starsType)
         {
             StarsType = starsType;
             foreach (MapLevel mapLevel in GetMapLevels().WhereNotNull())
                 mapLevel.UpdateStarsType(starsType);
-        }
+        }*/
 
     }
 }

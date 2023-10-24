@@ -139,6 +139,16 @@ namespace SweetSugar.Scripts.GUI
                 txt.text = "" + InitScript.Instance?.GetLife();
             }
 
+            if (name == "Gems")
+            {
+                txt.text = "" + InitScript.Gems;
+            }
+            
+            if (name == "CraftItems")
+            {
+                txt.text = "" + InitScript.CraftItems;
+            }
+
             if (name == "FailedCount")
             {
                 if (ThisLevelData.limitType == LIMIT.MOVES)
@@ -156,13 +166,7 @@ namespace SweetSugar.Scripts.GUI
             {
                 txt.text = "" + LevelData.THIS.GetTargetCounters().First(i => !i.IsTotalTargetReached()).targetLevel.GetFailedDescription();
             }
-
-
-            if (name == "Gems")
-            {
-                txt.text = "" + InitScript.Gems;
-            }
-
+            
             if (name == "TargetScore")
             {
                 txt.text = "" + ThisLevelData.star1;

@@ -381,7 +381,8 @@ namespace SweetSugar.Scripts.Core
                         MenuReference.THIS.MenuComplete.gameObject.SetActive(true);
                         SoundBase.Instance.PlayOneShot(SoundBase.Instance.complete[1]);
                         if(winRewardAmount > 0)
-                            InitScript.Instance.ShowGemsReward(winRewardAmount);// InitScript.Instance.ShowGemsReward(10);
+                            InitScript.Instance.AddGems(winRewardAmount);//InitScript.Instance.ShowGemsReward(10);
+                        InitScript.Instance.AddCraftItems(1);
                         OnWin();
                         break;
                 }
@@ -473,8 +474,8 @@ namespace SweetSugar.Scripts.Core
                     InitScript.DateOfExit = ServerTime.THIS.serverTime.ToString();
                 MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = false;
                 MenuReference.THIS.GetComponent<GraphicRaycaster>().enabled = true;
-                Level.transform.Find("Canvas").GetComponent<GraphicRaycaster>().enabled = false;
-                Level.transform.Find("Canvas").GetComponent<GraphicRaycaster>().enabled = true;
+                Level.transform.Find("CanvasWords").GetComponent<GraphicRaycaster>().enabled = false;
+                Level.transform.Find("CanvasWords").GetComponent<GraphicRaycaster>().enabled = true;
             }
 
             mainCamera.GetComponent<MapCamera>().enabled = enable;
