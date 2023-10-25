@@ -12,6 +12,7 @@
 
 using System.Collections;
 using System.Linq;
+using SweetSugar.Scriptable.Rewards;
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.Level;
 using TMPro;
@@ -43,9 +44,6 @@ namespace SweetSugar.Scripts.GUI
         // Use this for initialization
         void Awake()
         {
- 
-
-            // txt = GetComponent<Text>();
             txt = GetComponent<TextMeshProUGUI>();
         }
 
@@ -144,6 +142,11 @@ namespace SweetSugar.Scripts.GUI
                 txt.text = "" + InitScript.Gems;
             }
             
+            if (name == "GemsOnLevel")
+            {
+                txt.text = "" + Resources.Load<WinReward>("Scriptable/WinReward").winRewardAmount;
+            }
+            
             if (name == "CraftItems")
             {
                 txt.text = "" + InitScript.CraftItems;
@@ -176,11 +179,7 @@ namespace SweetSugar.Scripts.GUI
             {
                 txt.text = "" + PlayerPrefs.GetInt("OpenLevel");
             }
-
-            // if (name == "TargetDescription1")
-            // {
-            //     txt.text = "" + LevelData.THIS.GetTargetContainersForUI().First().targetLevel.GetDescription();
-            // }
+            
         }
 
         IEnumerator TimeTick()

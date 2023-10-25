@@ -230,6 +230,11 @@ namespace SweetSugar.Scripts.Core
 #endif
         }
 
+        public int GetCraftedItems()
+        {
+            return CraftItems;
+        }
+        
         public void AddCraftItems(int count)
         {
             CraftItems += count;
