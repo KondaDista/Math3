@@ -514,16 +514,16 @@ namespace SweetSugar.Scripts.GUI
         {
 //        if (GetComponent<Animation>()["bannerFailed"].speed == 0)
             {
-                if (InitScript.Gems >= LevelManager.THIS.FailedCost)
+                if (InitScript.lifes >= LevelManager.THIS.FailedCost)
                 {
-                    InitScript.Instance.SpendGems(LevelManager.THIS.FailedCost);
+                    InitScript.Instance.SpendLife(LevelManager.THIS.FailedCost);
                     button.GetComponent<Button>().interactable = false;
                     GoOnFailed();
                     GetComponent<Animation>()["bannerFailed"].speed = 1;  
                 }
                 else
                 {
-                    MenuReference.THIS.GemsShop.gameObject.SetActive(true);
+                    MenuReference.THIS.LiveShop.gameObject.SetActive(true);
                 }
             }
         }

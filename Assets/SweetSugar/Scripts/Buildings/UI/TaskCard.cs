@@ -13,8 +13,8 @@ public class TaskCard : MonoBehaviour
     public int Price;
     public TMP_Text PriceText;
     public int CountTasks;
-    private int currentCountTasks = 0;
-    
+    public int CompletedCountTasks;
+
     public Button ButtonCreateObject;
     public Transform SuccsesCreateObject;
     public Building BuildingInMap;
@@ -23,6 +23,12 @@ public class TaskCard : MonoBehaviour
 
     private void Start()
     {
+        if (CompletedCountTasks >= CountTasks)
+        {
+            CompleteTask();
+            return;
+        }
+
         ButtonCreateObject.onClick.AddListener(CreateObjectInBuilding);
         if (CountTasks > 1)
         {
@@ -35,13 +41,22 @@ public class TaskCard : MonoBehaviour
         if (InitScript.Instance.GetCraftedItems() >= Price)
         {
             InitScript.Instance.SpendCraftItems(Price);
-            BuildingInMap.CreateObject(currentCountTasks);
-            currentCountTasks++;
+            CompletedCountTasks++;
+            BuildingInMap.CreateObject(CompletedCountTasks);
 
-            if (currentCountTasks >= CountTasks)
-            {
-                SuccsesCreateObject.gameObject.SetActive(true);
-            }
+            if (CompletedCountTasks >= CountTasks)
+                CompleteTask();
         }
+    }
+    
+    public void LoadTask()
+    {
+        BuildingInMap.CreateObject(CompletedCountTasks);
+    }
+
+    private void CompleteTask()
+    {
+        ButtonCreateObject.interactable = false;
+        SuccsesCreateObject.gameObject.SetActive(true);
     }
 }

@@ -13336,6 +13336,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 998893838}
+  - {fileID: 1031278551}
   m_Father: {fileID: 1808213823}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14875,7 +14876,7 @@ GameObject:
   - component: {fileID: 303265717}
   - component: {fileID: 303265718}
   m_Layer: 0
-  m_Name: house-1
+  m_Name: house-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20949,6 +20950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 417923266}
   - component: {fileID: 417923267}
+  - component: {fileID: 417923268}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -20996,6 +20998,29 @@ MonoBehaviour:
   buidingInMap:
   - {fileID: 845885922}
   - {fileID: 1645812409}
+  buidingStructs: []
+  savePath: 
+  saveFileName: BuildingsSaves.json
+--- !u!114 &417923268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417923265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2403b73a5dcbd41be810eedf99a407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardTasks: {fileID: 417923267}
+  boardPanel: {fileID: 998893838}
+  currentTaskCard: []
+  TaskCardStructs: []
+  prefabTaskCard: {fileID: 3238523444136300719, guid: d13e0b9a28fcf0a40916846ab6db5eb5,
+    type: 3}
+  savePath: 
+  saveFileName: TasksCardSaves.json
 --- !u!1 &420405026
 GameObject:
   m_ObjectHideFlags: 0
@@ -24060,7 +24085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 867e1bccad47542bd82135a699dfdcea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c1cf19ebdd5a4a3ebaaadf84335132b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25634,7 +25659,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1808213828}
+      - m_Target: {fileID: 417923268}
         m_TargetAssemblyTypeName: BoardTasksWindow, Assembly-CSharp
         m_MethodName: Redraw
         m_Mode: 1
@@ -26988,7 +27013,7 @@ MonoBehaviour:
   lastSwitchedItem: {fileID: 0}
   popupScore: {fileID: 100000, guid: 045b1a17bc5268b419f9a7fa7af3c2ba, type: 3}
   currentLevel: 1
-  FailedCost: 12
+  FailedCost: 1
   ExtraFailedMoves: 5
   ExtraFailedSecs: 30
   gemsProducts:
@@ -46437,6 +46462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CreateObjects:
   - {fileID: 105097734}
+  CountCreatedObjects: 0
 --- !u!1 &846287295
 GameObject:
   m_ObjectHideFlags: 0
@@ -56016,7 +56042,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1808213823}
+  m_Father: {fileID: 276003968}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -56101,6 +56127,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 417923268}
+        m_TargetAssemblyTypeName: BoardTasksWindow, Assembly-CSharp
+        m_MethodName: SaveToFile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1031278554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56117,7 +56155,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -73893,7 +73931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 25
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac1cc5f47555d4c86a9b63db07214045, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: c962a7f85477b4f24b29ce415cdfed77, type: 2}
@@ -79170,7 +79208,7 @@ GameObject:
   - component: {fileID: 1347805539}
   - component: {fileID: 1347805538}
   m_Layer: 0
-  m_Name: house-1-1
+  m_Name: house-2-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99737,6 +99775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CreateObjects:
   - {fileID: 1347805537}
+  CountCreatedObjects: 0
 --- !u!1 &1646657463
 GameObject:
   m_ObjectHideFlags: 0
@@ -108085,7 +108124,6 @@ GameObject:
   - component: {fileID: 1808213826}
   - component: {fileID: 1808213825}
   - component: {fileID: 1808213824}
-  - component: {fileID: 1808213828}
   - component: {fileID: 1808213829}
   m_Layer: 5
   m_Name: BoardBG
@@ -108107,7 +108145,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 276003968}
-  - {fileID: 1031278551}
   m_Father: {fileID: 417923266}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108183,23 +108220,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808213822}
   m_CullTransparentMesh: 0
---- !u!114 &1808213828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808213822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2403b73a5dcbd41be810eedf99a407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boardTasks: {fileID: 417923267}
-  boardPanel: {fileID: 998893838}
-  currentTaskCard: []
-  prefabTaskCard: {fileID: 3238523444136300719, guid: d13e0b9a28fcf0a40916846ab6db5eb5,
-    type: 3}
 --- !u!114 &1808213829
 MonoBehaviour:
   m_ObjectHideFlags: 0
