@@ -12,6 +12,7 @@
 
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.Localization;
+using SweetSugar.Scripts.System;
 using TMPro;
 using UnityEngine;
 
@@ -25,11 +26,12 @@ namespace SweetSugar.Scripts.MapScripts
         private void OnEnable()
         {
             level = LevelsMap.GetLastestReachedLevel();
-            text.text = level.ToString();
+            text.text = $"Level: {level}";
         }
 
         public void PressPlay()
         {
+            MenuReference.THIS.HideAll();
             InitScript.OpenMenuPlay(level);
         }
     }

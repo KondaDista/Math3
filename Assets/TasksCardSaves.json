@@ -3,20 +3,20 @@
         {
             "Name": "Create House Air Ball",
             "Icon": {
-                "instanceID": 34218
+                "instanceID": 34230
             },
             "Price": 1,
             "CountTasks": 1,
-            "CompletedCountTasks": 1
+            "CompletedCountTasks": 0
         },
         {
             "Name": "Create House Chocolate Air Ball",
             "Icon": {
-                "instanceID": 34200
+                "instanceID": 34212
             },
             "Price": 1,
             "CountTasks": 1,
-            "CompletedCountTasks": 1
+            "CompletedCountTasks": 0
         }
     ]
 }

@@ -453,13 +453,6 @@ namespace SweetSugar.Scripts.GUI
 
         }
 
-        public void BuyGems()
-        {
-
-            SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
-            MenuReference.THIS.GemsShop.gameObject.SetActive(true);
-        }
-
         [UsedImplicitly]
         public void Buy(GameObject pack)
         {
@@ -483,6 +476,18 @@ namespace SweetSugar.Scripts.GUI
             Instantiate(Resources.Load("Loading"), transform.parent);
             yield return new WaitForEndOfFrame();
             SceneManager.LoadScene(Resources.Load<MapSwitcher>("Scriptable/MapSwitcher").GetSceneName());
+        }
+        
+        public void BuyCraftedItems()
+        {
+            SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
+            MenuReference.THIS.NotCraftedItems.gameObject.SetActive(true);
+        }
+        
+        public void BuyGems()
+        {
+            SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
+            MenuReference.THIS.GemsShop.gameObject.SetActive(true);
         }
 
         public void BuyLifeShop()

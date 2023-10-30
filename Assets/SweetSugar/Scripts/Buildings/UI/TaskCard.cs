@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SweetSugar.Scripts;
 using SweetSugar.Scripts.Core;
+using SweetSugar.Scripts.System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,6 +48,12 @@ public class TaskCard : MonoBehaviour
 
             if (CompletedCountTasks >= CountTasks)
                 CompleteTask();
+        }
+        else
+        {
+            SoundBase.Instance.PlayOneShot(SoundBase.Instance.click);
+            MenuReference.THIS.BoardTasks.gameObject.SetActive(false);
+            MenuReference.THIS.NotCraftedItems.gameObject.SetActive(true);
         }
     }
     

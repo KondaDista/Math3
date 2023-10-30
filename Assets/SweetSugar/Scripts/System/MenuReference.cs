@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace SweetSugar.Scripts.System
 {
-    public class MenuReference : UnityEngine.MonoBehaviour
+    public class MenuReference : MonoBehaviour
     {
         public static MenuReference THIS;
         public GameObject PrePlay;
@@ -29,6 +29,8 @@ namespace SweetSugar.Scripts.System
         public GameObject BoostShop;
         public GameObject LiveShop;
         public GameObject GemsShop;
+        public GameObject NotCraftedItems;
+        public GameObject BoardTasks;
         public GameObject Reward;
         public GameObject Daily;
         public GameObject Tutorials;
@@ -50,7 +52,7 @@ namespace SweetSugar.Scripts.System
             var canvas = THIS.transform;
             foreach (Transform item in canvas)
             {
-                if (item.name != "SettingsButton" && item.name != "Tutorials" && item.name != "Orientations" && item.name != "TutorialManager" && item.name != "Board" && !item.name.Contains("Rate"))
+                if (item.name != "SettingsButton" && item.name != "Tutorials" && item.name != "Orientations" && item.name != "TutorialManager" && item.name != "BoardTasks" && !item.name.Contains("Rate"))
                     item.gameObject.SetActive(false);
             }
         }
