@@ -10,7 +10,10 @@ using UnityEngine.UI;
 
 public class TaskCard : MonoBehaviour
 {
-    public TMP_Text Name;
+    [HideInInspector] public BoardTasksWindow boardTasksWindow;
+    
+    public string Name;
+    public TMP_Text Title;
     public Image Icon;
     public int Price;
     public TMP_Text PriceText;
@@ -18,10 +21,11 @@ public class TaskCard : MonoBehaviour
     public int CompletedCountTasks;
 
     public Button ButtonCreateObject;
-    public Transform SuccsesCreateObject;
     public Building BuildingInMap;
     
+    [SerializeField] private Transform SuccsesCreateObject;
     [SerializeField] private GameObject CountTasksSlider;
+    [SerializeField] private Image SliderImage;
 
     private void Start()
     {
@@ -31,14 +35,15 @@ public class TaskCard : MonoBehaviour
             return;
         }
 
-        ButtonCreateObject.onClick.AddListener(CreateObjectInBuilding);
+        ButtonCreateObject.onClick.AddListener(ExecutionTask);
         if (CountTasks > 1)
         {
             CountTasksSlider.SetActive(true);
+            UpdateSliderValue();
         }
     }
 
-    public void CreateObjectInBuilding()
+    public void ExecutionTask()
     {
         if (InitScript.Instance.GetCraftedItems() >= Price)
         {
@@ -46,8 +51,16 @@ public class TaskCard : MonoBehaviour
             CompletedCountTasks++;
             BuildingInMap.CreateObject(CompletedCountTasks);
 
+            if (CountTasks > 1)
+                UpdateSliderValue();
+
             if (CompletedCountTasks >= CountTasks)
+            {
                 CompleteTask();
+                return;
+            }
+
+            boardTasksWindow.UpgradeTask(this);
         }
         else
         {
@@ -55,6 +68,11 @@ public class TaskCard : MonoBehaviour
             MenuReference.THIS.BoardTasks.gameObject.SetActive(false);
             MenuReference.THIS.NotCraftedItems.gameObject.SetActive(true);
         }
+    }
+    
+    private void UpdateSliderValue()
+    {
+        SliderImage.fillAmount = (float)CompletedCountTasks/CountTasks;
     }
     
     public void LoadTask()
@@ -66,5 +84,8 @@ public class TaskCard : MonoBehaviour
     {
         ButtonCreateObject.interactable = false;
         SuccsesCreateObject.gameObject.SetActive(true);
+        CountTasksSlider.SetActive(false);
+        
+        boardTasksWindow.UpgradeTask(this);
     }
 }

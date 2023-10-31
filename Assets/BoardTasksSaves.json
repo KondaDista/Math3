@@ -1,0 +1,38 @@
+{
+    "Buidings": [
+        {
+            "Name": "House 1",
+            "CountCreatedObjects": 1
+        },
+        {
+            "Name": "House 2",
+            "CountCreatedObjects": 1
+        },
+        {
+            "Name": "House 3",
+            "CountCreatedObjects": 2
+        }
+    ],
+    "ActiveLocationTaskStructs": [
+        {
+            "Name": "Task_1_1",
+            "CompletedCountTasks": 1,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_1_2",
+            "CompletedCountTasks": 1,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_1_3",
+            "CompletedCountTasks": 2,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_1_4",
+            "CompletedCountTasks": 2,
+            "IsCompletedTask": true
+        }
+    ]
+}

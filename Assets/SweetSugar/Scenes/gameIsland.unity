@@ -6639,7 +6639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8044,7 +8044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.562561, y: 8}
+  m_AnchoredPosition: {x: 1.5626221, y: 8}
   m_SizeDelta: {x: 449.9, y: 449.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188488619
@@ -12050,7 +12050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 381, y: -4581}
+  m_AnchoredPosition: {x: 1019, y: -4581}
   m_SizeDelta: {x: 255, y: 352.63}
   m_Pivot: {x: 0.49999985, y: 0.26989016}
 --- !u!95 &255599862
@@ -12088,7 +12088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12497,6 +12497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264907484}
+  - component: {fileID: 264907485}
   m_Layer: 0
   m_Name: House 3
   m_TagString: Untagged
@@ -12512,7 +12513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264907483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.28, y: -14.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12523,6 +12524,22 @@ Transform:
   m_Father: {fileID: 1454906534}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264907485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264907483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2415852987dced48b099c64c7134e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CreateObjects:
+  - {fileID: 463082325}
+  - {fileID: 470463341}
+  CountCreatedObjects: 0
 --- !u!1 &266708196
 GameObject:
   m_ObjectHideFlags: 0
@@ -16635,7 +16652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19451,7 +19468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19964,16 +19981,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0b40856a63cd5429eeb8a59d7f0bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTasks:
-  - {fileID: 11400000, guid: ae46587614edbd14c81ed9e0dc254d39, type: 2}
-  - {fileID: 11400000, guid: 587d81e6b4b325d4a99a74cea319fa60, type: 2}
-  activeTasks: []
+  activeLocation:
+    Name: LocationName
+    Tasks: []
+  locationTasks:
+  - Name: Location_0
+    Tasks:
+    - Name: Task_0_1
+      Title: Create House Air Ball
+      Icon: {fileID: 21300000, guid: a412c06265a5c044ead0c70996718479, type: 3}
+      Price: 1
+      CountTasks: 1
+      CompletedCountTasks: 0
+      IsCompletedTasks: 0
+      Building: {fileID: 845885922}
+    - Name: Task_0_2
+      Title: Create House Chocolate Air Ball
+      Icon: {fileID: 21300000, guid: 3a847bf7ab423284f9834f6a4f04853d, type: 3}
+      Price: 2
+      CountTasks: 1
+      CompletedCountTasks: 0
+      IsCompletedTasks: 0
+      Building: {fileID: 1645812409}
+    - Name: Task_0_3
+      Title: Create Boat
+      Icon: {fileID: 21300000, guid: a8847494f581f8644aea8b3979e328dd, type: 3}
+      Price: 1
+      CountTasks: 2
+      CompletedCountTasks: 0
+      IsCompletedTasks: 0
+      Building: {fileID: 264907485}
+  - Name: Location_1
+    Tasks:
+    - Name: Task_1_1
+      Title: Create House Air Ball
+      Icon: {fileID: 21300000, guid: a412c06265a5c044ead0c70996718479, type: 3}
+      Price: 1
+      CountTasks: 1
+      CompletedCountTasks: 0
+      IsCompletedTasks: 0
+      Building: {fileID: 845885922}
+    - Name: Task_1_2
+      Title: Create House Chocolate Air Ball
+      Icon: {fileID: 21300000, guid: 3a847bf7ab423284f9834f6a4f04853d, type: 3}
+      Price: 3
+      CountTasks: 1
+      CompletedCountTasks: 0
+      IsCompletedTasks: 0
+      Building: {fileID: 1645812409}
+    - Name: Task_1_3
+      Title: Create Boat
+      Icon: {fileID: 21300000, guid: a8847494f581f8644aea8b3979e328dd, type: 3}
+      Price: 4
+      CountTasks: 2
+      CompletedCountTasks: 0
+      IsCompletedTasks: 0
+      Building: {fileID: 264907485}
+    - Name: Task_1_4
+      Title: Create Boat
+      Icon: {fileID: 21300000, guid: a8847494f581f8644aea8b3979e328dd, type: 3}
+      Price: 6
+      CountTasks: 2
+      CompletedCountTasks: 0
+      IsCompletedTasks: 0
+      Building: {fileID: 264907485}
   buidingInMap:
   - {fileID: 845885922}
   - {fileID: 1645812409}
-  buidingStructs: []
+  - {fileID: 264907485}
+  activeTasks: []
   savePath: 
-  saveFileName: BuildingsSaves.json
+  saveFileName: BoardTasksSaves.json
 --- !u!114 &417923268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19989,11 +20067,8 @@ MonoBehaviour:
   boardTasks: {fileID: 417923267}
   boardPanel: {fileID: 998893838}
   currentTaskCard: []
-  TaskCardStructs: []
   prefabTaskCard: {fileID: 3238523444136300719, guid: d13e0b9a28fcf0a40916846ab6db5eb5,
     type: 3}
-  savePath: 
-  saveFileName: TasksCardSaves.json
 --- !u!1 &421842606
 GameObject:
   m_ObjectHideFlags: 0
@@ -22127,7 +22202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &463082325
 Transform:
   m_ObjectHideFlags: 0
@@ -22717,7 +22792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &470463341
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22778,7 +22853,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 2
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &470463344
 Canvas:
   m_ObjectHideFlags: 0
@@ -34733,7 +34808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -47733,7 +47808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -51426,9 +51501,9 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 150
+    m_Top: 200
     m_Bottom: 800
-  m_ChildAlignment: 4
+  m_ChildAlignment: 1
   m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -83976,10 +84051,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 464399325}
-  - {fileID: 264907484}
   - {fileID: 845885921}
   - {fileID: 1645812408}
+  - {fileID: 264907484}
+  - {fileID: 464399325}
   m_Father: {fileID: 1368100610}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89696,7 +89771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -93777,7 +93852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645812407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 9.1, z: 0}
+  m_LocalPosition: {x: -0.91, y: 2.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -98429,7 +98504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -103274,7 +103349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -113909,7 +113984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -114160,7 +114235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -116474,7 +116549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

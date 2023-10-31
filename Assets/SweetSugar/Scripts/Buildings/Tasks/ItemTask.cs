@@ -1,12 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Task", menuName = "ItemTasks/Task")]
-public class ItemTask : ScriptableObject
+[System.Serializable]
+public class ItemTask 
 {
-   public string Name = "Task";
+   public string Name = "Task_0";
+   public string Title = "Title";
    public Sprite Icon;
    public int Price = 1;
    public int CountTasks = 1;
+   public int CompletedCountTasks = 0;
+   public bool IsCompletedTasks = false;
+   
+   public Building Building;
 }

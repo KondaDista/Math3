@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct BoardTaskStruct
+public class LocationTasks
 {
-    public BuildingStruct[] buidings;
+    public string Name = "LocationName";
+    public List<ItemTask> Tasks;
 }

@@ -3,16 +3,22 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BoardTasks : MonoBehaviour
 {
-    [SerializeField] private List<ItemTask> startTasks = new List<ItemTask>();
-    [SerializeField] private List<ItemTask> activeTasks = new List<ItemTask>();
-    [SerializeField] private List<Building> buidingInMap = new List<Building>();
-    [SerializeField] private BuildingStruct[] buidingStructs;
+    public Action UpdateActiveTasks;
+    
+    [SerializeField] private LocationTasks activeLocation;
+    [SerializeField] private List<LocationTasks> locationTasks;
+    [SerializeField] private List<Building> buidingInMap;
+    private int numberActiveLocation;
+    [SerializeField] private List<ItemTask> activeTasks;
+    
+    private BuildingStruct[] buidingStructs;
+    private TaskStruct[] activeLocationTaskStructs;
 
     public List<ItemTask> ActiveTasks => activeTasks;
-    public List<Building> BuidingInMap => buidingInMap;
 
     [SerializeField] private string savePath;
     [SerializeField] private string saveFileName = "BoardTasksSaves.json";
@@ -20,9 +26,12 @@ public class BoardTasks : MonoBehaviour
     public void SaveToFile()
     {
         CreateBuidingsStruct();
-        BoardTaskStruct boardTaskStruct = new BoardTaskStruct
+        CreateTaskStruct();
+        
+        BoardTasksStruct boardTaskStruct = new BoardTasksStruct
         {
-            buidings = buidingStructs
+            Buidings = buidingStructs,
+            ActiveLocationTaskStructs = activeLocationTaskStructs
         };
         
         string json = JsonUtility.ToJson(boardTaskStruct, true);
@@ -49,8 +58,9 @@ public class BoardTasks : MonoBehaviour
 
         try
         {
-            BoardTaskStruct boardTaskStruct = JsonUtility.FromJson<BoardTaskStruct>(json);
-            buidingStructs = boardTaskStruct.buidings;
+            BoardTasksStruct boardTaskStruct = JsonUtility.FromJson<BoardTasksStruct>(json);
+            buidingStructs = boardTaskStruct.Buidings;
+            activeLocationTaskStructs = boardTaskStruct.ActiveLocationTaskStructs;
             
             if (buidingStructs.Length > 0)
             {
@@ -58,11 +68,23 @@ public class BoardTasks : MonoBehaviour
                 foreach (var building in buidingStructs)
                 {
                     buidingInMap[i].CountCreatedObjects = building.CountCreatedObjects;
+                    buidingInMap[i].CreateObject(buidingInMap[i].CountCreatedObjects);
                     i++;
                 }
             }
             
-            Debug.Log("Load building from json");
+            if (activeLocationTaskStructs.Length > 0)
+            {
+                int i = 0;
+                foreach (var taskStruct in activeLocationTaskStructs)
+                {
+                    activeLocation.Tasks[i].CompletedCountTasks = taskStruct.CompletedCountTasks;
+                    activeLocation.Tasks[i].IsCompletedTasks = taskStruct.IsCompletedTask;
+                    i++;
+                }
+            }
+
+            Debug.Log("Load from json");
         }
         catch (Exception e)
         {
@@ -77,23 +99,103 @@ public class BoardTasks : MonoBehaviour
 #else
         savePath = Path.Combine(Application.dataPath, saveFileName);
 #endif
+
+        if (!PlayerPrefs.HasKey("Location"))
+            PlayerPrefs.SetInt("Location", 0);
+
+        numberActiveLocation = PlayerPrefs.GetInt("Location");
+        activeLocation = locationTasks[numberActiveLocation];
+        activeLocationTaskStructs = new TaskStruct[activeLocation.Tasks.Count];
         
         LoadFromFile();
     }
 
     void Start()
     {
-        foreach (var task in startTasks)
+        UpdateBoardTasks();
+    }
+
+    public void UpdateBoardTasks()
+    {
+        activeTasks.Clear();
+        
+        int i = 0;
+        foreach (var task in activeLocation.Tasks)
         {
-            AddTask(task);
+            if (activeLocationTaskStructs[i].IsCompletedTask)
+            {
+                i++;
+                continue;
+            }
+
+            if (activeTasks.Count < 2)
+                AddTask(task);
+            else
+                break;
+            i++;
         }
+
+        if (activeTasks.Count <= 0)
+        {
+            UpdateLocation();
+        }
+        
+        UpdateActiveTasks?.Invoke();
     }
 
     private void AddTask(ItemTask itemTask)
     {
         activeTasks.Add(itemTask);
     }
+
+    private void UpdateLocation()
+    {
+        PlayerPrefs.SetInt("Location", numberActiveLocation + 1);
+        numberActiveLocation = PlayerPrefs.GetInt("Location");
+        
+        activeLocation = locationTasks[numberActiveLocation];
+        activeLocationTaskStructs = new TaskStruct[activeLocation.Tasks.Count];
+
+        UpdateBoardTasks();
+        SaveToFile();
+        Debug.Log("Update Location");
+    }
     
+    public void UpgradeTask(string name, int completedCountTasks)
+    {
+        foreach (var task in activeTasks)
+        {
+            if (task.Name == name)
+            {
+                task.CompletedCountTasks = completedCountTasks;
+                if (task.CompletedCountTasks >= task.CountTasks)
+                {
+                    task.IsCompletedTasks = true;
+                }
+            }
+        }
+        
+        SaveToFile();
+        UpdateBoardTasks();
+    }
+
+    private void CreateTaskStruct()
+    {
+        activeLocationTaskStructs = new TaskStruct[activeLocation.Tasks.Count];
+        
+        int i = 0;
+        foreach (var task in activeLocation.Tasks)
+        {
+            TaskStruct taskStruct = new TaskStruct();
+            taskStruct.Name = task.Name;
+            taskStruct.CompletedCountTasks = task.CompletedCountTasks;
+            taskStruct.IsCompletedTask = task.IsCompletedTasks;
+
+            activeLocationTaskStructs[i] = taskStruct;
+            i++;
+        }
+    }
+
     private void CreateBuidingsStruct()
     {
         buidingStructs = new BuildingStruct[buidingInMap.Count];
