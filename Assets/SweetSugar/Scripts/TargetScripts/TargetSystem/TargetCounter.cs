@@ -141,12 +141,12 @@ namespace SweetSugar.Scripts.TargetScripts.TargetSystem
                 });
             }
 
-            if (targetLevel.name == "Stars")
+            /*if (targetLevel.name == "Stars")
             {
                 if(!showScores) count = Savecount - LevelManager.THIS.stars;
                 else count = Savecount - LevelManager.Score;
                 if (count < 0) count = 0;
-            }
+            }*/
         }
 
         public void changeCount(int i)

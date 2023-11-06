@@ -185,8 +185,8 @@ namespace SweetSugar.Scripts.Core
         }
         //score gain on this game
         public static int Score;
-        //stars gain on this game
-        public int stars;
+        /*//stars gain on this game
+        public int stars;*/
         //striped effect reference
         public GameObject stripesEffect;
         //show popup score on field
@@ -547,7 +547,7 @@ namespace SweetSugar.Scripts.Core
         {
             ActivatedBoost = null;
             Score = 0;
-            stars = 0;
+            //stars = 0;
             moveID = 0;
             fieldBoards = new List<FieldBoard>();
             transform.position += Vector3.down * 1000;
@@ -741,7 +741,7 @@ namespace SweetSugar.Scripts.Core
 
             if (DebugSettings.AI && (win || lose))
             {
-                Debug.Log((win ? "win " : "lose ") + " score " + Score+ " stars " + stars + " moves/time rest " + THIS.levelData.limit);
+                Debug.Log((win ? "win " : "lose ") + " score " + Score + " moves/time rest " + THIS.levelData.limit);
                 RestartLevel();
             }
         }
@@ -766,12 +766,12 @@ namespace SweetSugar.Scripts.Core
             if(skipWin)
             {
                 Score += limit * Random.Range(500, 3000) / levelData.colorLimit;
-                CheckStars();
+                //CheckStars();
                 skipWin = false;
                 Destroy(tapToSkip);
             }
-            if (PlayerPrefs.GetInt($"Level.{currentLevel:000}.StarsCount", 0) < stars)
-                PlayerPrefs.SetInt($"Level.{currentLevel:000}.StarsCount", stars);
+            /*if (PlayerPrefs.GetInt($"Level.{currentLevel:000}.StarsCount", 0) < stars)
+                PlayerPrefs.SetInt($"Level.{currentLevel:000}.StarsCount", stars);*/
             if (Score > PlayerPrefs.GetInt("Score" + currentLevel))
             {
                 PlayerPrefs.SetInt("Score" + currentLevel, Score);
@@ -780,14 +780,14 @@ namespace SweetSugar.Scripts.Core
                 PlayerPrefs.SetInt("ReachedLevel",currentLevel+1);
             PlayerPrefs.Save();
             if(Application.isEditor)
-                Debug.Log("Level " + currentLevel + " score " + Score + " stars " + stars);
+                Debug.Log("Level " + currentLevel + " score " + Score);
             CrosssceneData.win = true;
 #if PLAYFAB || GAMESPARKS
             NetworkManager.dataManager.SetPlayerScore(currentLevel, Score);
             NetworkManager.dataManager.SetPlayerLevel(currentLevel + 1);
-            NetworkManager.dataManager.SetStars(currentLevel);
+            //NetworkManager.dataManager.SetStars(currentLevel);
 #elif EPSILON
-              NetworkManager.dataManager.SetPlayerLevel(new EpsilonLevel(currentLevel, stars, Score));
+              //NetworkManager.dataManager.SetPlayerLevel(new EpsilonLevel(currentLevel, stars, Score));
 #endif
               
             gameStatus = GameState.Win;
@@ -868,7 +868,7 @@ namespace SweetSugar.Scripts.Core
 
             if (Input.GetKeyDown(DebugSettings.Win) && DebugSettings.enableHotkeys)
             {
-                stars = Mathf.Clamp(stars,1, stars);
+                /*stars = Mathf.Clamp(stars,1, stars);*/
                 gameStatus = GameState.PreWinAnimations;
             }
 
@@ -1465,7 +1465,7 @@ namespace SweetSugar.Scripts.Core
         /// <summary>
         /// check gained stars
         /// </summary>
-        public void CheckStars()
+        /*public void CheckStars()
         {
             if (Score >= levelData.star1 && stars <= 0)
             {
@@ -1481,7 +1481,7 @@ namespace SweetSugar.Scripts.Core
             {
                 stars = 3;
             }
-        }
+        }*/
 
         /// <summary>
         /// load level from 

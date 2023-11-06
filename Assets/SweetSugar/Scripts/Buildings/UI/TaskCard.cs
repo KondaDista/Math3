@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SweetSugar.LeanTween.Framework;
 using SweetSugar.Scripts;
 using SweetSugar.Scripts.Core;
 using SweetSugar.Scripts.System;
@@ -43,13 +44,19 @@ public class TaskCard : MonoBehaviour
         }
     }
 
+    public void FirstOpenTask()
+    {
+        transform.localScale = Vector3.zero;
+        LeanTween.scale(gameObject, new Vector3(1f, 1f, 1f), 1f).setDelay(1f)
+            .setEase(LeanTweenType.easeOutQuint);
+    }
+
     public void ExecutionTask()
     {
         if (InitScript.Instance.GetCraftedItems() >= Price)
         {
             InitScript.Instance.SpendCraftItems(Price);
             CompletedCountTasks++;
-            BuildingInMap.CreateObject(CompletedCountTasks);
 
             if (CountTasks > 1)
                 UpdateSliderValue();
@@ -57,10 +64,11 @@ public class TaskCard : MonoBehaviour
             if (CompletedCountTasks >= CountTasks)
             {
                 CompleteTask();
-                return;
             }
 
+            UpgradeBuilding();
             boardTasksWindow.UpgradeTask(this);
+            boardTasksWindow.transform.GetChild(0).gameObject.SetActive(false);
         }
         else
         {
@@ -75,7 +83,7 @@ public class TaskCard : MonoBehaviour
         SliderImage.fillAmount = (float)CompletedCountTasks/CountTasks;
     }
     
-    public void LoadTask()
+    public void UpgradeBuilding()
     {
         BuildingInMap.CreateObject(CompletedCountTasks);
     }
@@ -85,7 +93,14 @@ public class TaskCard : MonoBehaviour
         ButtonCreateObject.interactable = false;
         SuccsesCreateObject.gameObject.SetActive(true);
         CountTasksSlider.SetActive(false);
-        
-        boardTasksWindow.UpgradeTask(this);
+    }
+
+    public void DeletedTask()
+    {
+        LeanTween.scale(gameObject, new Vector3(0f, 0f, 0f), 0.75f).setDelay(0.2f)
+            .setEase(LeanTweenType.easeOutQuint).setOnComplete(() =>
+            {
+                Destroy(gameObject);
+            });
     }
 }

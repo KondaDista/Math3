@@ -275,35 +275,7 @@ namespace SweetSugar.Scripts.GUI
             }
         }
 
-        /// <summary>
-        /// Complete popup animation
-        /// </summary>
-        /*IEnumerator MenuComplete()
-        {
-            for (var i = 1; i <= LevelManager.THIS.stars; i++)
-            {
-                //  SoundBase.Instance.audio.PlayOneShot( SoundBase.Instance.scoringStar );
-                transform.Find("Image").Find("Star" + i).gameObject.SetActive(true);
-                SoundBase.Instance.PlayOneShot(SoundBase.Instance.star[i - 1]);
-                yield return new WaitForSeconds(0.5f);
-            }
-        }*/
-
-        /// <summary>
-        /// Complete popup animation
-        /// </summary>
-        /*IEnumerator MenuCompleteScoring()
-        {
-            var scores = transform.Find("Image").Find("Score").GetComponent<TextMeshProUGUI>();
-            for (var i = 0; i <= LevelManager.Score; i += 500)
-            {
-                scores.text = "" + i;
-                // SoundBase.Instance.audio.PlayOneShot( SoundBase.Instance.scoring );
-                yield return new WaitForSeconds(0.00001f);
-            }
-            scores.text = "" + LevelManager.Score;
-        }*/
-
+      
         /// <summary>
         /// SHows info popup
         /// </summary>
@@ -311,7 +283,7 @@ namespace SweetSugar.Scripts.GUI
         {
             MenuReference.THIS.Tutorials.gameObject.SetActive(false);
             MenuReference.THIS.Tutorials.gameObject.SetActive(true);
-            OpneMenu(gameObject);
+            OpneMenu(transform.parent.gameObject);
         }
 
 
@@ -327,11 +299,6 @@ namespace SweetSugar.Scripts.GUI
                 menu.SetActive(false);
             else
                 menu.SetActive(true);
-        }
-
-        public IEnumerator Close()
-        {
-            yield return new WaitForSeconds(0.5f);
         }
 
         public void CloseMenu()

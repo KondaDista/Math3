@@ -583,6 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0889544d609522444a7192c6a6434229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardTasksWindow: {fileID: 0}
   Name: 
   Title: {fileID: 919740336759011142}
   Icon: {fileID: 1735171488786058070}
@@ -591,8 +592,8 @@ MonoBehaviour:
   CountTasks: 0
   CompletedCountTasks: 0
   ButtonCreateObject: {fileID: 7290480461632295637}
-  SuccsesCreateObject: {fileID: 541456790979106015}
   BuildingInMap: {fileID: 0}
+  SuccsesCreateObject: {fileID: 541456790979106015}
   CountTasksSlider: {fileID: 3744461427140771124}
   SliderImage: {fileID: 2330338130980452754}
 --- !u!1 &5857088716436025760

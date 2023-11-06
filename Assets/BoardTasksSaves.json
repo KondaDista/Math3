@@ -1,38 +1,114 @@
 {
     "Buidings": [
         {
-            "Name": "House 1",
+            "Name": "PuzzlePiece (1)",
             "CountCreatedObjects": 1
         },
         {
-            "Name": "House 2",
+            "Name": "PuzzlePiece (2)",
             "CountCreatedObjects": 1
         },
         {
-            "Name": "House 3",
+            "Name": "PuzzlePiece (3)",
             "CountCreatedObjects": 2
+        },
+        {
+            "Name": "PuzzlePiece (4)",
+            "CountCreatedObjects": 1
+        },
+        {
+            "Name": "PuzzlePiece (5)",
+            "CountCreatedObjects": 2
+        },
+        {
+            "Name": "PuzzlePiece (6)",
+            "CountCreatedObjects": 2
+        },
+        {
+            "Name": "PuzzlePiece (7)",
+            "CountCreatedObjects": 4
+        },
+        {
+            "Name": "PuzzlePiece (8)",
+            "CountCreatedObjects": 4
+        },
+        {
+            "Name": "PuzzlePiece (9)",
+            "CountCreatedObjects": 4
+        },
+        {
+            "Name": "PuzzlePiece (10)",
+            "CountCreatedObjects": 1
+        },
+        {
+            "Name": "PuzzlePiece (11)",
+            "CountCreatedObjects": 4
+        },
+        {
+            "Name": "PuzzlePiece (12)",
+            "CountCreatedObjects": 1
         }
     ],
     "ActiveLocationTaskStructs": [
         {
-            "Name": "Task_1_1",
+            "Name": "Task_0_1",
             "CompletedCountTasks": 1,
             "IsCompletedTask": true
         },
         {
-            "Name": "Task_1_2",
+            "Name": "Task_0_2",
             "CompletedCountTasks": 1,
             "IsCompletedTask": true
         },
         {
-            "Name": "Task_1_3",
+            "Name": "Task_0_3",
             "CompletedCountTasks": 2,
             "IsCompletedTask": true
         },
         {
-            "Name": "Task_1_4",
+            "Name": "Task_0_4",
+            "CompletedCountTasks": 1,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_0_5",
             "CompletedCountTasks": 2,
             "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_0_6",
+            "CompletedCountTasks": 2,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_0_7",
+            "CompletedCountTasks": 4,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_0_8",
+            "CompletedCountTasks": 4,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_0_9",
+            "CompletedCountTasks": 4,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_0_10",
+            "CompletedCountTasks": 1,
+            "IsCompletedTask": false
+        },
+        {
+            "Name": "Task_0_11",
+            "CompletedCountTasks": 4,
+            "IsCompletedTask": true
+        },
+        {
+            "Name": "Task_0_12",
+            "CompletedCountTasks": 1,
+            "IsCompletedTask": false
         }
     ]
 }

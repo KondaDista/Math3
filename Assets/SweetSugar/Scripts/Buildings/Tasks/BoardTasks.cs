@@ -4,21 +4,31 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class BoardTasks : MonoBehaviour
 {
     public Action UpdateActiveTasks;
     
+    [Header("Active Stats")]
     [SerializeField] private LocationTasks activeLocation;
+    [SerializeField] private LevelDesk activeLevelDesk;
+    
+    [Header("Preferences Levels")]
     [SerializeField] private List<LocationTasks> locationTasks;
-    [SerializeField] private List<Building> buidingInMap;
-    private int numberActiveLocation;
+    [SerializeField] private List<LevelDesk> levelDesks;
     [SerializeField] private List<ItemTask> activeTasks;
+    
+    private int numberActiveLocation;
+    private int completedTask;
     
     private BuildingStruct[] buidingStructs;
     private TaskStruct[] activeLocationTaskStructs;
 
     public List<ItemTask> ActiveTasks => activeTasks;
+    public int CompletedTask => completedTask;
+    public int CountActiveLocationTasks => activeLocation.Tasks.Count;
+    public int NumberActiveLocation => numberActiveLocation;
 
     [SerializeField] private string savePath;
     [SerializeField] private string saveFileName = "BoardTasksSaves.json";
@@ -67,8 +77,8 @@ public class BoardTasks : MonoBehaviour
                 int i = 0;
                 foreach (var building in buidingStructs)
                 {
-                    buidingInMap[i].CountCreatedObjects = building.CountCreatedObjects;
-                    buidingInMap[i].CreateObject(buidingInMap[i].CountCreatedObjects);
+                    activeLevelDesk.buidingInMap[i].CountCreatedObjects = building.CountCreatedObjects;
+                    activeLevelDesk.buidingInMap[i].CreateObject(activeLevelDesk.buidingInMap[i].CountCreatedObjects);
                     i++;
                 }
             }
@@ -104,6 +114,8 @@ public class BoardTasks : MonoBehaviour
             PlayerPrefs.SetInt("Location", 0);
 
         numberActiveLocation = PlayerPrefs.GetInt("Location");
+        activeLevelDesk = levelDesks[numberActiveLocation];
+        activeLevelDesk.gameObject.SetActive(true);
         activeLocation = locationTasks[numberActiveLocation];
         activeLocationTaskStructs = new TaskStruct[activeLocation.Tasks.Count];
         
@@ -117,14 +129,18 @@ public class BoardTasks : MonoBehaviour
 
     public void UpdateBoardTasks()
     {
-        activeTasks.Clear();
-        
+        if (activeTasks.Count > 0)
+            activeTasks.Clear();
+
         int i = 0;
+        completedTask = 0;
+
         foreach (var task in activeLocation.Tasks)
         {
             if (activeLocationTaskStructs[i].IsCompletedTask)
             {
                 i++;
+                completedTask++;
                 continue;
             }
 
@@ -139,7 +155,7 @@ public class BoardTasks : MonoBehaviour
         {
             UpdateLocation();
         }
-        
+
         UpdateActiveTasks?.Invoke();
     }
 
@@ -152,6 +168,13 @@ public class BoardTasks : MonoBehaviour
     {
         PlayerPrefs.SetInt("Location", numberActiveLocation + 1);
         numberActiveLocation = PlayerPrefs.GetInt("Location");
+        
+        activeLevelDesk = levelDesks[numberActiveLocation];
+        for (int i = 0; i < levelDesks.Count; i++)
+        {
+            levelDesks[i].gameObject.SetActive(false);
+        }
+        activeLevelDesk.gameObject.SetActive(true);
         
         activeLocation = locationTasks[numberActiveLocation];
         activeLocationTaskStructs = new TaskStruct[activeLocation.Tasks.Count];
@@ -198,10 +221,10 @@ public class BoardTasks : MonoBehaviour
 
     private void CreateBuidingsStruct()
     {
-        buidingStructs = new BuildingStruct[buidingInMap.Count];
+        buidingStructs = new BuildingStruct[activeLevelDesk.buidingInMap.Count];
         
         int i = 0;
-        foreach (var building in buidingInMap)
+        foreach (var building in activeLevelDesk.buidingInMap)
         {
             BuildingStruct buildingStruct = new BuildingStruct();
             buildingStruct.Name = building.name;

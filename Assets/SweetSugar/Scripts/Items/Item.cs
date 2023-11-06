@@ -1289,7 +1289,7 @@ namespace SweetSugar.Scripts.Items
             if (showScore)
                 LevelManager.THIS.ShowPopupScore(scoreForItem, transform.position, color);
             LevelManager.Score += scoreForItem;
-            LevelManager.THIS.CheckStars();
+           // LevelManager.THIS.CheckStars();
             LevelManager.THIS.levelData.GetTargetObject().CheckItems(new[] { this });
             Destroy(itemAnimTransform.GetComponent<Animator>());
             GetTopItemInterface()?.Destroy(this, null);
